@@ -109,7 +109,7 @@ class _TodayListScreenState extends State<TodayListScreen> {
           child: Container(
             color: ConstantsColor.backgroundColor,
             child: Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8),
+               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

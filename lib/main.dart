@@ -4,11 +4,12 @@ import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'controllers/global_controller.dart';
+import 'views/dashboard_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
-  var box = await Hive.openBox('doctorBox');
+  await Hive.openBox('doctorBox');
   runApp(const MyApp());
 }
 
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
     return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: SplashScreen(),
+      // home: SplashScreen(),
+      home: DashBoardScreen(),
     );
   }
 }
