@@ -1,7 +1,9 @@
 class Endpoints {
   Endpoints._();
 
-  static String? server = "https://cureways.vaccinehomebd.com/api/v1/";
+  // static String? server = "https://cureways.vaccinehomebd.com/api/v1/";
+  static String? server = "https://cureways.webbysys.click/api/v1/";
+
   static String? register = "reg";
   static String? login = "login";
   static String? orderList = "order-list";
