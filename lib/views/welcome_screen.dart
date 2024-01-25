@@ -1,6 +1,7 @@
 
 import 'package:doctors_app/controllers/social_login_controller.dart';
 import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/services/google_sig_in.dart';
 import 'package:doctors_app/utils/const_color.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class WelcomescreenCheck extends StatefulWidget {
 
 class _WelcomescreenCheckState extends State<WelcomescreenCheck> {
   SocialLoginController socialLoginController = SocialLoginController();
+  
 
   @override
   void didChangeDependencies() {
@@ -147,17 +149,17 @@ class _WelcomescreenCheckState extends State<WelcomescreenCheck> {
                               height: 50,
                               child: OutlinedButton(
                                 onPressed: () async {
-                                  // final user = await GoogleSignInApi.login();
-                                  // kLogger.e(user?.photoUrl);
-                                  // if (user == null) {
-                                  //   ScaffoldMessenger.of(context)
-                                  //       .showSnackBar((const SnackBar(
-                                  //     content: Text("Sign In failed"),
-                                  //   )));
-                                  // } else {
-                                  //   auth.loginOnTap(context, user.displayName,
-                                  //       user.email, user.photoUrl);
-                                  // }
+                                  final user = await GoogleSignInApi.login();
+                                  kLogger.e(user?.photoUrl);
+                                  if (user == null) {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar((const SnackBar(
+                                      content: Text("Sign In failed"),
+                                    )));
+                                  } else {
+                                    auth.loginOnTap(context, user.displayName,
+                                        user.email, user.photoUrl);
+                                  }
                                 },
                                 style: OutlinedButton.styleFrom(
                                   side:  BorderSide(

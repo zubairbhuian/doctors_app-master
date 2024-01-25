@@ -1,6 +1,7 @@
 import 'package:doctors_app/controllers/slot_store_controller.dart';
 import 'package:doctors_app/controllers/today_slot_list_controller.dart';
 import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -85,75 +86,12 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
     return GetBuilder<SlotStoreController>(
       init: SlotStoreController(),
       builder: (storeSlot) => Scaffold(
-        appBar: AppBar(
-          toolbarHeight: 152,
-          automaticallyImplyLeading: false,
-          backgroundColor: ConstantsColor.primaryColor,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(12.0),
-                bottomRight: Radius.circular(12.0)),
-          ),
-          title: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Hi, ${_myBox.get('name')}!",
-                          textAlign: TextAlign.start,
-                          style: const TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.w600,
-                              color: Colors.white),
-                        ),
-                        const Text(
-                          "Welcome back",
-                          textAlign: TextAlign.start,
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.w400,
-                              color: Colors.white),
-                        )
-                      ],
-                    ),
-                  ),
-                  SvgPicture.asset(
-                    "assets/home_screen/bell.svg",
-                    height: 32,
-                    width: 32,
-                    theme: const SvgTheme(currentColor: Colors.white),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Create Slot",
-                    textAlign: TextAlign.start,
-                    style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white),
-                  )
-                ],
-              )
-            ],
-          ),
+        appBar: const CustomAppBar(
+          title: Text("Create Slot"),
         ),
         body: SingleChildScrollView(
           child: Padding(
-             padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 12),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

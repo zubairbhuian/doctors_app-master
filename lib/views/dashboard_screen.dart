@@ -50,7 +50,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Text(
-                        "Hi, ${_myBox.get('name')}!",
+                        "Hi, ${_myBox.get('userName')}!",
                         textAlign: TextAlign.start,
                         style: const TextStyle(
                             fontSize: 18,
