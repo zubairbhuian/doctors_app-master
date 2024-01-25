@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:doctors_app/services/user_service.dart';
 import 'package:doctors_app/views/auth_screen.dart';
 import 'package:doctors_app/views/dashboard_screen.dart';
+import 'package:doctors_app/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (isUser == true) {
       Get.off(() => const DashBoardScreen());
     } else {
-      Get.off(() => const AuthScreen());
+      Get.off(() => const WelcomescreenCheck());
     }
   }
 

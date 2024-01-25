@@ -6,6 +6,7 @@ class Endpoints {
 
   static String? register = "reg";
   static String? login = "login";
+    static String? socialLogin = "social-login";
   static String? orderList = "order-list";
   static String? statusChange = "status-change";
   static String? doctorLogin = "doctor/login";
