@@ -29,7 +29,7 @@ class SocialLoginController extends GetxController {
         .postRequest(endPoint: Endpoints.socialLogin, body: jsonBody)
         .then((response) {
 
-      print(json.decode(response.body));
+      kLogger.i(json.decode(response.body));
       if (response != null && response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
         kLogger.e(jsonResponse);

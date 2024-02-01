@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:logger/logger.dart';
 
 class ConstantsColor {
   static const Color primaryColor = Color(0xff0F4B97);

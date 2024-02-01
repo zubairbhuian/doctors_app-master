@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:http/http.dart' as http;
 
 import 'constants/endpoints.dart';
@@ -90,7 +91,7 @@ class Server {
       client.badCertificateCallback =
           ((X509Certificate cert, String host, int port) => true);
       return await http.get(
-          Uri.parse(Endpoints.server! + "category/$categoryId/show"),
+          Uri.parse("${Endpoints.server!}category/$categoryId/show"),
           headers: _getHttpHeaders());
     } catch (error) {
       return null;
@@ -105,7 +106,7 @@ class Server {
       client.badCertificateCallback =
           ((X509Certificate cert, String host, int port) => true);
       return await http.get(
-          Uri.parse(Endpoints.server! + "cuisine/$cuisineId/show"),
+          Uri.parse("${Endpoints.server!}cuisine/$cuisineId/show"),
           headers: _getHttpHeaders());
     } catch (error) {
       return null;
@@ -120,7 +121,7 @@ class Server {
       client.badCertificateCallback =
           ((X509Certificate cert, String host, int port) => true);
       return await http.get(
-          Uri.parse(Endpoints.server! + "orders/$orderId/show"),
+          Uri.parse("${Endpoints.server!}orders/$orderId/show"),
           headers: _getHttpHeaders());
     } catch (error) {
       return null;
@@ -146,8 +147,8 @@ class Server {
   }
 
   postRequest({String? endPoint, String? body}) async {
-    print(Endpoints.server! + endPoint!);
-    print(body);
+    kLogger.i(Endpoints.server! + endPoint!);
+    kLogger.i(body);
     HttpClient client = HttpClient();
     try {
       client.badCertificateCallback =
@@ -196,7 +197,7 @@ class Server {
     };
     HttpClient client = HttpClient();
     try {
-      var request;
+      http.MultipartRequest request;
       if (type) {
         request = http.MultipartRequest(
             'POST', Uri.parse(Endpoints.server! + endPoint!))
@@ -258,14 +259,14 @@ class Server {
   }
 
   static Map<String, String> _getHttpHeaders() {
-    Map<String, String> headers = new Map<String, String>();
+    Map<String, String> headers = <String, String>{};
     headers['Authorization'] = bearerToken!;
     headers['content-type'] = 'application/json';
     return headers;
   }
 
   static Map<String, String> getAuthHeaders() {
-    Map<String, String> headers = new Map<String, String>();
+    Map<String, String> headers = <String, String>{};
     headers['content-type'] = 'application/json';
     return headers;
   }

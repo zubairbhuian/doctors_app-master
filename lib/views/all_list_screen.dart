@@ -3,9 +3,7 @@ import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/views/update_slot.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class AllListScreen extends StatefulWidget {

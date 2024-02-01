@@ -1,3 +1,4 @@
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
 import 'package:get/get.dart';
@@ -30,9 +31,9 @@ class GlobalController extends GetxController {
 
   initController() async {
     final validUser = await userService.loginCheck();
-    print(validUser);
+    kLogger.i(validUser);
     isUser = validUser;
-    print('global isUser: $isUser');
+    kLogger.i('global isUser: $isUser');
     Future.delayed(const Duration(milliseconds: 10), () {
       update();
     });

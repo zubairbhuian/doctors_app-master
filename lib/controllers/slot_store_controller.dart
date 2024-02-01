@@ -41,10 +41,10 @@ class SlotStoreController extends GetxController {
     server
         .postRequestWithToken(endPoint: Endpoints.slotStore, body: jsonBody)
         .then((response) {
-      print(json.decode(response.body));
+      kLogger.i(json.decode(response.body));
       if (response != null && response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
-        print(jsonResponse);
+        kLogger.i(jsonResponse);
 
         loader = false;
         Future.delayed(const Duration(milliseconds: 10), () {

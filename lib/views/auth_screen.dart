@@ -1,6 +1,5 @@
 import 'package:doctors_app/controllers/login_controller.dart';
 import 'package:doctors_app/services/constants/colors.dart';
-import 'package:doctors_app/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

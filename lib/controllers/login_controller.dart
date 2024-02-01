@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:doctors_app/models/login_response_model.dart';
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
@@ -32,10 +33,10 @@ class LoginController extends GetxController {
     server
         .postRequest(endPoint: Endpoints.doctorLogin, body: jsonBody)
         .then((response) {
-      print(json.decode(response.body));
+      kLogger.i(json.decode(response.body));
       if (response != null && response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
-        print(jsonResponse);
+        kLogger.i(jsonResponse);
         var loginData = LoginResponseModel.fromJson(jsonResponse);
         var bearerToken = 'Bearer ${loginData.token}';
         userService.saveBoolean(key: 'is-user', value: true);

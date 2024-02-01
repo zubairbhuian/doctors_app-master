@@ -4,7 +4,6 @@ import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 import 'all_list_screen.dart';

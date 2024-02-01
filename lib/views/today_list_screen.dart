@@ -3,9 +3,7 @@ import 'package:doctors_app/controllers/today_slot_list_controller.dart';
 import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 class TodayListScreen extends StatefulWidget {
@@ -22,8 +20,6 @@ class _TodayListScreenState extends State<TodayListScreen> {
   final colorList = <Color>[
     Colors.white,
   ];
-
-  final _myBox = Hive.box('doctorBox');
 
   TodaySlotListController todaySlotListController = TodaySlotListController();
   SlotStoreController storeController = SlotStoreController();

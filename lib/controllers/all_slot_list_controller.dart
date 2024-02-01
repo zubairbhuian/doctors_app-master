@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:doctors_app/models/all_slot_list_model.dart';
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:flutter/material.dart';
@@ -29,10 +30,10 @@ class AllSlotListController extends GetxController {
     server
         .postRequestWithToken(endPoint: Endpoints.allSlot, body: jsonBody)
         .then((response) {
-      print(json.decode(response.body));
+      kLogger.i(json.decode(response.body));
       if (response != null && response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
-        print(jsonResponse);
+        kLogger.i(jsonResponse);
         var allSlotData = AllSlotListModel.fromJson(jsonResponse);
 
         allSlotList = <AllSlotData>[];

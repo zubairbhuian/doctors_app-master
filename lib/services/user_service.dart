@@ -1,3 +1,4 @@
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserService {
@@ -40,7 +41,7 @@ class UserService {
 
   loginCheck() async {
     prefs = await SharedPreferences.getInstance();
-    print(prefs!.getBool('is-user'));
+    kLogger.i(prefs!.getBool('is-user'));
     if (prefs!.getBool('is-user') != null) {
       return prefs!.getBool('is-user');
     } else {
@@ -52,13 +53,12 @@ class UserService {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return String
     bool? b = prefs.getBool('is-user');
-    print('kkokokkokokokokok');
-    print(b);
+    kLogger.i(b);
     return b;
   }
 
   getUserId() async {
-    print("came here");
+    kLogger.i("came here");
     prefs = await SharedPreferences.getInstance();
     if (prefs!.getString('user-id') != null) {
       return prefs!.getString('user-id').toString();
