@@ -27,7 +27,6 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
   final TextEditingController slotFromTime = TextEditingController();
   final TextEditingController slotToTime = TextEditingController();
   SlotStoreController storeController = SlotStoreController();
-  final _myBox = Hive.box('doctorBox');
   TodaySlotListController todaySlotListController = TodaySlotListController();
 
   @override

@@ -32,7 +32,7 @@ class SocialLoginController extends GetxController {
       print(json.decode(response.body));
       if (response != null && response.statusCode == 200) {
         final jsonResponse = json.decode(response.body);
-        print(jsonResponse);
+        kLogger.e(jsonResponse);
         var loginData = SocialLoginResponseModel.fromJson(jsonResponse);
         var bearerToken = 'Bearer ${loginData.token}';
         userService.saveBoolean(key: 'is-user', value: true);

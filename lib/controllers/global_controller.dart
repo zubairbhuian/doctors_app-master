@@ -33,7 +33,7 @@ class GlobalController extends GetxController {
     print(validUser);
     isUser = validUser;
     print('global isUser: $isUser');
-    Future.delayed(Duration(milliseconds: 10), () {
+    Future.delayed(const Duration(milliseconds: 10), () {
       update();
     });
     if (isUser) {
@@ -41,7 +41,7 @@ class GlobalController extends GetxController {
       final myId = await userService.getUserId();
       bearerToken = token;
       userId = myId;
-      Future.delayed(Duration(milliseconds: 10), () {
+      Future.delayed(const Duration(milliseconds: 10), () {
         update();
       });
       Server.initClass(token: bearerToken);

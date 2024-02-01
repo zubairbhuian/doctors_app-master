@@ -1,11 +1,13 @@
 import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/mixins.dart';
 import 'package:doctors_app/views/today_list_screen.dart';
+import 'package:doctors_app/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'all_slots_date_list_screen.dart';
 import 'create_slot_screen.dart';
@@ -24,6 +26,18 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   final colorList = <Color>[
     Colors.white,
   ];
+  // ******* Log Out
+  onLogOut() async {
+    // clean SharedPreferences data
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.clear();
+    // clean HoveBox  data
+    var box = await Hive.openBox('doctorBox');
+    await box.clear();
+
+    // Route For Login
+    Get.offAll(() => const WelcomescreenCheck());
+  }
 
   final _myBox = Hive.box('doctorBox');
 
@@ -236,6 +250,11 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 const SizedBox(
                   height: 8,
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      onLogOut();
+                    },
+                    child: const Text("Log out"))
               ],
             ),
           ),

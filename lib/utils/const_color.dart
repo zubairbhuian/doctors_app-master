@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-class ConstantsColor{
+import 'package:logger/logger.dart';
+
+class ConstantsColor {
   static const Color primaryColor = Color(0xff0F4B97);
-  static const Color secondaryColor = Color(0xff3B5998
-  );
+  static const Color secondaryColor = Color(0xff3B5998);
   static const Color greyColor = Color(0xff8F8F8F);
   static const Color backgroundColor = Color(0xffE8EFFA);
 }
+
 const Color kPrimaryColor = Color(0xff0F4B97);
 const Color kTitleColor = Color(0xff222222);
 const Color kTextColor = Color(0xff222222);
@@ -26,3 +28,4 @@ const Color kWhite = Colors.white;
 const Color kRed = Colors.red;
 const Color kBlack = Colors.black;
 const Color kYellow = Color(0xffFFCA1E);
+// Logger kLogger = Logger();

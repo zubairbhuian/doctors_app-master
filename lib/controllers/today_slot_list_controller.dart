@@ -15,7 +15,7 @@ class TodaySlotListController extends GetxController {
   List<TodaySlotData> todaySlotList = <TodaySlotData>[];
 
   getTodaySlotList() async {
-    var doctorID = _myBox.get('id');
+    var doctorID = _myBox.get('userId');
     loader = true;
     Future.delayed(const Duration(milliseconds: 10), () {
       update();

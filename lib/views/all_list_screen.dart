@@ -1,7 +1,10 @@
 import 'package:doctors_app/models/all_slot_list_model.dart';
 import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/views/update_slot.dart';
+import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:pie_chart/pie_chart.dart';
 
@@ -22,8 +25,6 @@ class _AllListScreenState extends State<AllListScreen> {
     Colors.white,
   ];
 
-  final _myBox = Hive.box('doctorBox');
-
   // AllSlotListController allSlotListController = AllSlotListController();
   //
   // @override
@@ -35,75 +36,12 @@ class _AllListScreenState extends State<AllListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<dynamic> filteredSlotList = widget.allSlotData
+    List<AllSlotData> filteredSlotList = widget.allSlotData
         .where((element) => element.date == widget.date)
         .toList();
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 152,
-        automaticallyImplyLeading: false,
-        backgroundColor: ConstantsColor.primaryColor,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(12.0),
-              bottomRight: Radius.circular(12.0)),
-        ),
-        title: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hi, ${_myBox.get('name')}!",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
-                      ),
-                      const Text(
-                        "Welcome back",
-                        textAlign: TextAlign.start,
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w400,
-                            color: Colors.white),
-                      )
-                    ],
-                  ),
-                ),
-                SvgPicture.asset(
-                  "assets/home_screen/bell.svg",
-                  height: 32,
-                  width: 32,
-                  theme: const SvgTheme(currentColor: Colors.white),
-                )
-              ],
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Slots on ${widget.date}",
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white),
-                )
-              ],
-            )
-          ],
-        ),
+      appBar: const CustomAppBar(
+        title: Text("My Slot"),
       ),
       body: SingleChildScrollView(
         child: Container(
@@ -183,47 +121,56 @@ class _AllListScreenState extends State<AllListScreen> {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: filteredSlotList.length,
                     itemBuilder: ((context, int index) {
-                      return Card(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Slot time:  ${filteredSlotList[index].slotFrom} - ${filteredSlotList[index].slotTo}",
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 18,
-                                  color: Colors.black,
+                      return GestureDetector(
+                        onTap: () {
+                          Get.to(() => UpdateSlot(
+                              id: filteredSlotList[index].id ?? 0,
+                              date: filteredSlotList[index].date ?? "",
+                              from: filteredSlotList[index].slotFrom ?? "",
+                              to: filteredSlotList[index].slotTo ?? ""));
+                        },
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Slot time:  ${filteredSlotList[index].slotFrom} - ${filteredSlotList[index].slotTo}",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                              filteredSlotList[index].status == "5"
-                                  ? const Text(
-                                      "Booked",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12,
-                                        color: Colors.green,
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                filteredSlotList[index].status == "5"
+                                    ? const Text(
+                                        "Booked",
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12,
+                                          color: Colors.green,
+                                        ),
+                                      )
+                                    : const Text(
+                                        "Unbooked",
+                                        textAlign: TextAlign.start,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 12,
+                                          color: Colors.red,
+                                        ),
                                       ),
-                                    )
-                                  : const Text(
-                                      "Unbooked",
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 12,
-                                        color: Colors.red,
-                                      ),
-                                    ),
-                              const SizedBox(
-                                height: 4,
-                              ),
-                            ],
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

@@ -1,12 +1,12 @@
 import 'dart:convert';
 
+import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-
 class SlotStoreController extends GetxController {
   UserService userService = UserService();
   Server server = Server();
@@ -21,7 +21,8 @@ class SlotStoreController extends GetxController {
     String? slotTo,
     String? status,
   ) async {
-    var doctorID = _myBox.get('id');
+    var doctorID = _myBox.get('userId');
+    kLogger.e(doctorID);
     loader = true;
     Future.delayed(const Duration(milliseconds: 10), () {
       update();
@@ -34,6 +35,7 @@ class SlotStoreController extends GetxController {
       'slot_to': slotTo,
       'status': status
     };
+    kLogger.i(body);
     String jsonBody = json.encode(body);
 
     server
