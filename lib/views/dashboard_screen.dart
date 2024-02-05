@@ -44,6 +44,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ConstantsColor.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 152,
         automaticallyImplyLeading: false,

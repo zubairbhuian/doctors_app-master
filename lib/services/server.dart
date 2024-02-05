@@ -195,6 +195,7 @@ class Server {
       'Authorization': bearerToken!,
       'Content-Type': 'multipart/form-data',
     };
+
     HttpClient client = HttpClient();
     try {
       http.MultipartRequest request;
@@ -231,10 +232,10 @@ class Server {
     }
   }
 
-  getRequestParamWithToken({String? endPoint, body}) async {
+  getRequestParamWithToken({required String endPoint}) async {
     HttpClient client = HttpClient();
-    var uri =
-        Uri.https(Endpoints.apiUrl!, Endpoints.apiEndPoint! + endPoint!, body);
+    var uri = Uri.https(endPoint);
+    kLogger.e(uri);
     try {
       return await http.get(uri, headers: _getHttpHeaders());
     } catch (error) {
@@ -262,6 +263,7 @@ class Server {
     Map<String, String> headers = <String, String>{};
     headers['Authorization'] = bearerToken!;
     headers['content-type'] = 'application/json';
+    kLogger.e(headers);
     return headers;
   }
 

@@ -1,3 +1,4 @@
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/views/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,10 +25,13 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context,child) {
-        return const GetMaterialApp(
+        return  GetMaterialApp(
+          theme: ThemeData(
+              scaffoldBackgroundColor: ConstantsColor.backgroundColor
+          ),
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
-          home: SplashScreen(),
+          home: const SplashScreen(),
         );
       }
     );

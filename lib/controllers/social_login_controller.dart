@@ -45,6 +45,7 @@ class SocialLoginController extends GetxController {
             key: 'email', value: loginData.data!.email.toString());
         _myBox.put('userId', loginData.data!.id.toString());
         _myBox.put('userName', loginData.data!.name.toString());
+        _myBox.put('token_1', loginData.token);
 
         _myBox.put('email', loginData.data!.email.toString());
         _myBox.put('userPhoto', photoUrl);

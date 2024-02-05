@@ -13,6 +13,7 @@ class Endpoints {
   static String? slotStore = "slot-store";
   static String? slotUpdate = "slot-update";
   static String? todaySlot = "todaySlot";
+  static String? slotDelete = "slot-delete/"; 
   static String? allSlot = "allSlot";
   static String? apiUrl = "cureways.vaccinehomebd.com";
   static String? apiEndPoint = "/api/v1/";

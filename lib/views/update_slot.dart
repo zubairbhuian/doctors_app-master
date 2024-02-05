@@ -12,15 +12,18 @@ import 'package:intl/intl.dart';
 
 class UpdateSlot extends StatefulWidget {
   final int id;
+  final String userId;
   final String date;
   final String from;
   final String to;
-  const UpdateSlot(
-      {super.key,
-      required this.date,
-      required this.from,
-      required this.to,
-      required this.id});
+  const UpdateSlot({
+    super.key,
+    required this.date,
+    required this.from,
+    required this.to,
+    required this.id,
+    required this.userId,
+  });
 
   @override
   State<UpdateSlot> createState() => _UpdateSlotState();
@@ -35,7 +38,7 @@ class _UpdateSlotState extends State<UpdateSlot> {
       TextEditingController(text: widget.from);
   late TextEditingController slotToTime =
       TextEditingController(text: widget.to);
-  bool loader =false;
+  bool loader = false;
 
   Future _selectDate() async {
     DateTime? picked = await showDatePicker(
@@ -85,7 +88,11 @@ class _UpdateSlotState extends State<UpdateSlot> {
     try {
       loader = true;
       Map body = {
-        'id': "doctorID",
+        'id': widget.id,
+        'doctor_id': widget.userId,
+        'date': widget.date,
+        'slot_from': widget.from,
+        'slot_to': widget.to
       };
       kLogger.i(body);
       String jsonBody = json.encode(body);
@@ -97,6 +104,10 @@ class _UpdateSlotState extends State<UpdateSlot> {
           final jsonResponse = json.decode(response.body);
           kLogger.i(jsonResponse);
           loader = false;
+          setState(() {
+            
+          });
+
           Get.rawSnackbar(
               message: 'Successful!', backgroundColor: Colors.green);
         } else {
@@ -110,7 +121,6 @@ class _UpdateSlotState extends State<UpdateSlot> {
       kLogger.e(e);
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -232,7 +242,6 @@ class _UpdateSlotState extends State<UpdateSlot> {
                   setState(() {
                     updateSlot();
                   });
-                  
                 },
                 style: OutlinedButton.styleFrom(
                   backgroundColor: kPrimaryColor,
