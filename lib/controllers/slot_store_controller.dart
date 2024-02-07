@@ -1,9 +1,8 @@
 import 'dart:convert';
-
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';

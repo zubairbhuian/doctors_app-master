@@ -1,6 +1,7 @@
-import 'package:doctors_app/services/constants/colors.dart';
+
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:get/get.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';

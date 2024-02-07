@@ -1,5 +1,5 @@
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/mixins.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/views/today_list_screen.dart';
 import 'package:doctors_app/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -44,11 +44,10 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ConstantsColor.backgroundColor,
       appBar: AppBar(
         toolbarHeight: 152,
         automaticallyImplyLeading: false,
-        backgroundColor: ConstantsColor.primaryColor,
+        backgroundColor: kPrimaryColor,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(12.0),
@@ -87,7 +86,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                   "assets/home_screen/bell.svg",
                   height: 32,
                   width: 32,
-                  theme: const SvgTheme(currentColor: Colors.white),
+                  color: kWhite,
                 )
               ],
             ),
@@ -113,7 +112,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
       ),
       body: SingleChildScrollView(
         child: Container(
-          color: ConstantsColor.backgroundColor,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Column(
@@ -122,7 +120,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                 const SizedBox(height: 20),
                 Container(
                   decoration: BoxDecoration(
-                      color: const Color(0xff082244),
+                      color: kPrimaryColor,
                       borderRadius: BorderRadius.circular(10)),
                   height: 125,
                   width: double.maxFinite,
@@ -164,8 +162,8 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           initialAngleInDegree: 80,
                           centerText: "80%",
                           centerTextStyle: const TextStyle(
-                              backgroundColor: Color(0xff082244), fontSize: 18),
-                          baseChartColor: const Color(0xff6D90C6),
+                              backgroundColor: kPrimaryColor, fontSize: 18),
+                          baseChartColor: const Color.fromARGB(255, 156, 188, 248),
                           colorList: colorList,
                           chartValuesOptions: const ChartValuesOptions(
                             showChartValuesInPercentage: true,
@@ -216,7 +214,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: ConstantsColor.primaryColor,
+                              color: kPrimaryColor,
                               borderRadius: BorderRadius.circular(5),
                             ),
                             height: 80,
@@ -248,14 +246,6 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         );
                       }),
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      onLogOut();
-                    },
-                    child: const Text("Log out"))
               ],
             ),
           ),

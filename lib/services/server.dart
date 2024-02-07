@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:http/http.dart' as http;
 
 import 'constants/endpoints.dart';

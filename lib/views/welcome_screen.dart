@@ -1,8 +1,4 @@
-
-// ignore_for_file: deprecated_member_use, use_build_context_synchronously
-
 import 'package:doctors_app/controllers/social_login_controller.dart';
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/google_sig_in.dart';
 import 'package:doctors_app/utils/const_color.dart';
 import 'package:flutter/material.dart';

@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';

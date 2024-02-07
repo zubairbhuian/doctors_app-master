@@ -1,6 +1,6 @@
 import 'package:doctors_app/controllers/all_slot_list_controller.dart';
 import 'package:doctors_app/controllers/slot_store_controller.dart';
-import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -56,7 +56,7 @@ class _AllSlotsDateListScreenState extends State<AllSlotsDateListScreen> {
                     const SizedBox(height: 20),
                     Container(
                       decoration: BoxDecoration(
-                          color: const Color(0xff082244),
+                          color: kPrimaryColor,
                           borderRadius: BorderRadius.circular(10)),
                       height: 125,
                       width: double.maxFinite,
@@ -98,9 +98,9 @@ class _AllSlotsDateListScreenState extends State<AllSlotsDateListScreen> {
                               initialAngleInDegree: 80,
                               centerText: "80%",
                               centerTextStyle: const TextStyle(
-                                  backgroundColor: Color(0xff082244),
+                                  backgroundColor: kPrimaryColor,
                                   fontSize: 18),
-                              baseChartColor: const Color(0xff6D90C6),
+                              baseChartColor: const Color.fromARGB(255, 168, 202, 251),
                               colorList: colorList,
                               chartValuesOptions: const ChartValuesOptions(
                                 showChartValuesInPercentage: true,

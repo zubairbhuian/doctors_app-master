@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:doctors_app/models/social_login_response_model.dart';
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/services/user_service.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/views/dashboard_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

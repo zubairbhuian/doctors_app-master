@@ -1,4 +1,4 @@
-import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserService {

@@ -2,15 +2,13 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:doctors_app/models/all_slot_list_model.dart';
-import 'package:doctors_app/services/constants/colors.dart';
 import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
-import 'package:doctors_app/views/all_slots_date_list_screen.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/widgets/popup_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:http/http.dart';
 
 class AllSlotListController extends GetxController {
   static AllSlotListController get to => Get.find();
@@ -77,10 +75,9 @@ class AllSlotListController extends GetxController {
 
       if (res.statusCode == 200) {
         getAllSlotList();
-        PopupDialog.closeLoadingDialog();
         update();
-        // Get.to(() => const AllSlotsDateListScreen());
-        // Get.rawSnackbar(message: 'Success!', backgroundColor: Colors.green);
+
+        PopupDialog.closeLoadingDialog();
       } else {
         Get.rawSnackbar(message: 'Delete field', backgroundColor: Colors.red);
       }

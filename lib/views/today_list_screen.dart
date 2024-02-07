@@ -1,6 +1,6 @@
 import 'package:doctors_app/controllers/slot_store_controller.dart';
 import 'package:doctors_app/controllers/today_slot_list_controller.dart';
-import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -40,7 +40,6 @@ class _TodayListScreenState extends State<TodayListScreen> {
       appBar: const CustomAppBar(title: Text("Today's Slots"),),
         body: SingleChildScrollView(
           child: Container(
-            color: ConstantsColor.backgroundColor,
             child: Padding(
                padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -49,7 +48,7 @@ class _TodayListScreenState extends State<TodayListScreen> {
                   const SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
-                        color: const Color(0xff082244),
+                        color: kPrimaryColor,
                         borderRadius: BorderRadius.circular(10)),
                     height: 125,
                     width: double.maxFinite,
@@ -91,9 +90,9 @@ class _TodayListScreenState extends State<TodayListScreen> {
                             initialAngleInDegree: 80,
                             centerText: "80%",
                             centerTextStyle: const TextStyle(
-                                backgroundColor: Color(0xff082244),
+                                backgroundColor: kPrimaryColor,
                                 fontSize: 18),
-                            baseChartColor: const Color(0xff6D90C6),
+                            baseChartColor: const Color.fromARGB(255, 175, 206, 254),
                             colorList: colorList,
                             chartValuesOptions: const ChartValuesOptions(
                               showChartValuesInPercentage: true,

@@ -1,6 +1,6 @@
 import 'package:doctors_app/controllers/all_slot_list_controller.dart';
 import 'package:doctors_app/models/all_slot_list_model.dart';
-import 'package:doctors_app/services/constants/colors.dart';
+import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/views/update_slot.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +29,6 @@ class _AllListScreenState extends State<AllListScreen> {
   @override
   Widget build(BuildContext context) {
     String userId = _myBox.get('userId');
-    kLogger.e(userId);
     return Scaffold(
       appBar: const CustomAppBar(
         title: Text("My Slot"),
@@ -44,7 +43,7 @@ class _AllListScreenState extends State<AllListScreen> {
                 const SizedBox(height: 20),
                 Container(
                   decoration: BoxDecoration(
-                      color: const Color(0xff082244),
+                      color: kPrimaryColor,
                       borderRadius: BorderRadius.circular(10)),
                   height: 125,
                   width: double.maxFinite,
@@ -86,8 +85,8 @@ class _AllListScreenState extends State<AllListScreen> {
                           initialAngleInDegree: 80,
                           centerText: "80%",
                           centerTextStyle: const TextStyle(
-                              backgroundColor: Color(0xff082244), fontSize: 18),
-                          baseChartColor: const Color(0xff6D90C6),
+                              backgroundColor: kPrimaryColor, fontSize: 18),
+                          baseChartColor: const Color.fromARGB(255, 174, 207, 255),
                           colorList: colorList,
                           chartValuesOptions: const ChartValuesOptions(
                             showChartValuesInPercentage: true,
