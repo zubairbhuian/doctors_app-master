@@ -45,67 +45,6 @@ class _TodayListScreenState extends State<TodayListScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 20),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: kPrimaryColor,
-                        borderRadius: BorderRadius.circular(10)),
-                    height: 125,
-                    width: double.maxFinite,
-                    child: Center(
-                        child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "OVERALL PROGRESS",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ),
-                              SizedBox(
-                                height: 2,
-                              ),
-                              Text(
-                                "LAST 7 DAYS",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w400),
-                              )
-                            ],
-                          ),
-                          PieChart(
-                            dataMap: dataMap,
-                            chartType: ChartType.ring,
-                            chartRadius: 100,
-                            ringStrokeWidth: 15,
-                            initialAngleInDegree: 80,
-                            centerText: "80%",
-                            centerTextStyle: const TextStyle(
-                                backgroundColor: kPrimaryColor,
-                                fontSize: 18),
-                            baseChartColor: const Color.fromARGB(255, 175, 206, 254),
-                            colorList: colorList,
-                            chartValuesOptions: const ChartValuesOptions(
-                              showChartValuesInPercentage: true,
-                              showChartValues: false,
-                            ),
-                            legendOptions:
-                                const LegendOptions(showLegends: false),
-                            totalValue: 100,
-                          ),
-                        ],
-                      ),
-                    )),
-                  ),
                   const SizedBox(
                     height: 8,
                   ),
