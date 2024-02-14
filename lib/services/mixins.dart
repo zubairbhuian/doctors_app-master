@@ -1,14 +1,16 @@
+import 'package:flutter/material.dart';
+
 class Mixins {
   final List<Map<String, dynamic>> mainMenuItem = [
     {
       "title": "Today's\nSlots",
-      "images": "assets/home_screen/active_orders.png"
+      "iconData": Icons.date_range_rounded
     },
     {
       "title": "Create\nSlot",
-      "images": "assets/home_screen/pending_orders.png"
+      "iconData": Icons.add_box
     },
-    {"title": "All\nSlots", "images": "assets/home_screen/compleat_orders.png"},
+    {"title": "All\nSlots", "iconData": Icons.all_inclusive_sharp},
   ];
   final List<Map<String, dynamic>> doctorAppointmentMainMenuItem = [
     {

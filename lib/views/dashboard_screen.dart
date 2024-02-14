@@ -163,12 +163,7 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Image(
-                                  image: AssetImage(
-                                      "${Mixins().mainMenuItem.elementAt(index)["images"]}"),
-                                  height: 50,
-                                  width: 50,
-                                ),
+                                Icon(Mixins().mainMenuItem.elementAt(index)["iconData"],color: kWhite,size: 33,),
                                 const SizedBox(
                                   height: 8,
                                 ),
