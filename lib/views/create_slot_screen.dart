@@ -24,6 +24,7 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
   final TextEditingController referredDate = TextEditingController();
   final TextEditingController slotFromTime = TextEditingController();
   final TextEditingController slotToTime = TextEditingController();
+  final TextEditingController consultancyDuration = TextEditingController();
   SlotStoreController storeController = SlotStoreController();
   TodaySlotListController todaySlotListController = TodaySlotListController();
 
@@ -44,6 +45,17 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
     if (picked != null) {
       final formattedDate = DateFormat('yyyy-MM-dd').format(picked);
       setState(() => referredDate.text = formattedDate.toString());
+    }
+  }
+   Future _setconsultancyDuration() async {
+    DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2020),
+        lastDate: DateTime(2030));
+    if (picked != null) {
+      final formattedDate = DateFormat('yyyy-MM-dd').format(picked);
+      setState(() => consultancyDuration.text = formattedDate.toString());
     }
   }
 
@@ -139,7 +151,7 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
                             fontSize: 18),
                       ),
                       const SizedBox(
-                        height: 16,
+                        height: 8,
                       ),
                       TextFormField(
                         controller: slotFromTime,
@@ -188,6 +200,37 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 15,),
+                         const Text(
+                        "Consultancy Duration",
+                        style: TextStyle(
+                            color: ConstantsColor.primaryColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18),
+                      ),
+                      const SizedBox(height: 8,),
+                        TextFormField(
+                        controller: consultancyDuration,
+                        onTap: () {
+                          _setconsultancyDuration();
+                        },
+                        keyboardType: TextInputType.text,
+                        textAlign: TextAlign.center,
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(vertical: 20),
+                          labelText: '   Select Consultancy Duration',
+                          hintText: '   Select Consultancy Duration',
+                          border: OutlineInputBorder(),
+                          hintStyle: TextStyle(
+                              color: Colors.grey, fontStyle: FontStyle.normal),
+                          labelStyle: TextStyle(
+                              color: Colors.grey, fontStyle: FontStyle.normal),
+                          suffixIcon: Icon(
+                            Icons.timer,
+                            color: ConstantsColor.primaryColor,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -204,6 +247,7 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
                         referredDate.text.toString().trim(),
                         slotFromTime.text.toString().trim(),
                         slotToTime.text.toString().trim(),
+                        consultancyDuration.text.toString().trim(),
                         "10",
                       );
                     },

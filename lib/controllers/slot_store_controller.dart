@@ -18,6 +18,7 @@ class SlotStoreController extends GetxController {
     String? date,
     String? slotFrom,
     String? slotTo,
+    String? consultancyDuration,
     String? status,
   ) async {
     var doctorID = _myBox.get('userId');
@@ -32,6 +33,7 @@ class SlotStoreController extends GetxController {
       'date': date,
       'slot_from': slotFrom,
       'slot_to': slotTo,
+      // 'consultancy_duration': consultancyDuration,
       'status': status
     };
     kLogger.i(body);
