@@ -1,8 +1,10 @@
 import 'package:doctors_app/controllers/slot_store_controller.dart';
 import 'package:doctors_app/controllers/today_slot_list_controller.dart';
 import 'package:doctors_app/utils/const_color.dart';
+import 'package:doctors_app/views/tab/add_slote_tab.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
@@ -47,7 +49,8 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
       setState(() => referredDate.text = formattedDate.toString());
     }
   }
-   Future _setconsultancyDuration() async {
+
+  Future _setconsultancyDuration() async {
     DateTime? picked = await showDatePicker(
         context: context,
         initialDate: DateTime.now(),
@@ -94,247 +97,41 @@ class _CreateSlotScreenState extends State<CreateSlotScreen> {
   Widget build(BuildContext context) {
     return GetBuilder<SlotStoreController>(
       init: SlotStoreController(),
-      builder: (storeSlot) => Scaffold(
-        appBar: const CustomAppBar(
-          title: Text("Create Slot"),
-        ),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text(
-                  "REFERRED DATE ",
-                  style: TextStyle(
-                      color: ConstantsColor.primaryColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                Form(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextFormField(
-                        controller: referredDate,
-                        onTap: () {
-                          _selectDate();
-                        },
-                        keyboardType: TextInputType.text,
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20),
-                          labelText: '   Referred Date',
-                          hintText: '   Referred Date',
-                          border: OutlineInputBorder(),
-                          hintStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          labelStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          suffixIcon: Icon(
-                            Icons.calendar_today,
-                            color: ConstantsColor.primaryColor,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        "TIME SLOTS ",
-                        style: TextStyle(
-                            color: ConstantsColor.primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      TextFormField(
-                        controller: slotFromTime,
-                        onTap: () {
-                          _selectSlotFromTime();
-                        },
-                        keyboardType: TextInputType.text,
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20),
-                          labelText: '   Select Slot From',
-                          hintText: '   Select Slot From',
-                          border: OutlineInputBorder(),
-                          hintStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          labelStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          suffixIcon: Icon(
-                            Icons.timer,
-                            color: ConstantsColor.primaryColor,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                        controller: slotToTime,
-                        onTap: () {
-                          _selectSlotToTime();
-                        },
-                        keyboardType: TextInputType.text,
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20),
-                          labelText: '   Select Slot To',
-                          hintText: '   Select Slot To',
-                          border: OutlineInputBorder(),
-                          hintStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          labelStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          suffixIcon: Icon(
-                            Icons.timer,
-                            color: ConstantsColor.primaryColor,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 15,),
-                         const Text(
-                        "Consultancy Duration",
-                        style: TextStyle(
-                            color: ConstantsColor.primaryColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      const SizedBox(height: 8,),
-                        TextFormField(
-                        controller: consultancyDuration,
-                        onTap: () {
-                          _setconsultancyDuration();
-                        },
-                        keyboardType: TextInputType.text,
-                        textAlign: TextAlign.center,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(vertical: 20),
-                          labelText: '   Select Consultancy Duration',
-                          hintText: '   Select Consultancy Duration',
-                          border: OutlineInputBorder(),
-                          hintStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          labelStyle: TextStyle(
-                              color: Colors.grey, fontStyle: FontStyle.normal),
-                          suffixIcon: Icon(
-                            Icons.timer,
-                            color: ConstantsColor.primaryColor,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  width: double.maxFinite,
-                  height: 52,
-                  child: OutlinedButton(
-                    onPressed: () {
-                      storeSlot.storeSlotOnTap(
-                        context,
-                        referredDate.text.toString().trim(),
-                        slotFromTime.text.toString().trim(),
-                        slotToTime.text.toString().trim(),
-                        consultancyDuration.text.toString().trim(),
-                        "10",
-                      );
-                    },
-                    style: OutlinedButton.styleFrom(
-                      backgroundColor: ConstantsColor.primaryColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                    ),
-                    child: storeSlot.loader == true
-                        ? const CircularProgressIndicator(
-                            color: ConstantsColor.backgroundColor,
-                          )
-                        : const Text(
-                            'CREATE SLOT',
-                            style: TextStyle(color: Colors.white, fontSize: 20),
-                          ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-                GetBuilder<TodaySlotListController>(
-                  init: TodaySlotListController(),
-                  builder: (todaySlot) => todaySlot.loader == true
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : ListView.builder(
-                          scrollDirection: Axis.vertical,
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: todaySlot.todaySlotList.length,
-                          itemBuilder: ((context, int index) {
-                            return Card(
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Slot time:  ${todaySlot.todaySlotList[index].slotFrom} - ${todaySlot.todaySlotList[index].slotTo}",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w700,
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                    todaySlot.todaySlotList[index].status == "5"
-                                        ? const Text(
-                                            "Booked",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12,
-                                              color: Colors.green,
-                                            ),
-                                          )
-                                        : const Text(
-                                            "Unbooked",
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12,
-                                              color: Colors.red,
-                                            ),
-                                          ),
-                                    const SizedBox(
-                                      height: 4,
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          })),
-                ),
-              ],
+      builder: (storeSlot) => DefaultTabController(
+        length: storeController.daysOfWeek.length,
+        child: Scaffold(
+            appBar: CustomAppBar(
+              preferredHeight: 80,
+              title: const Text("Create Slot"),
+              bottom: TabBar(
+                controller: storeController.tabController,
+                isScrollable: true,
+                labelColor: kWhite,
+                unselectedLabelColor: kWhite,
+                dividerColor: kWhite,
+                indicatorColor: kWhite,
+                padding: const EdgeInsets.symmetric(vertical: 6),
+                tabs: List.generate(storeController.daysOfWeek.length, (index) {
+                  return Text(storeController.daysOfWeek[index]);
+                }),
+              ),
             ),
-          ),
-        ),
+            body: TabBarView(
+                controller: storeController.tabController,
+                children:
+                    List.generate(storeController.daysOfWeek.length, (index) {
+                  return  AddSloteTab(storeController.daysOfWeek[index]);
+                }))),
       ),
     );
   }
 }
+
+
+
+
+
+
+
+        
+        

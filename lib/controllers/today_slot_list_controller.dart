@@ -1,10 +1,7 @@
-import 'dart:convert';
-
+import 'package:dio/dio.dart';
 import 'package:doctors_app/models/today_slot_list_model.dart';
-import 'package:doctors_app/services/constants/endpoints.dart';
 import 'package:doctors_app/services/server.dart';
 import 'package:doctors_app/utils/const_color.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 
@@ -17,40 +14,27 @@ class TodaySlotListController extends GetxController {
 
   getTodaySlotList() async {
     var doctorID = _myBox.get('userId');
-    loader = true;
-    Future.delayed(const Duration(milliseconds: 10), () {
+
+    try {
+      Dio dio = Dio();
+      loader = true;
       update();
-    });
-
-    Map body = {
-      'id': doctorID,
-    };
-    String jsonBody = json.encode(body);
-
-    server
-        .postRequestWithToken(endPoint: Endpoints.todaySlot, body: jsonBody)
-        .then((response) {
-      kLogger.i(json.decode(response.body));
-      if (response != null && response.statusCode == 200) {
-        final jsonResponse = json.decode(response.body);
-        kLogger.i(jsonResponse);
-        var todaySlotData = TodaySlotListModel.fromJson(jsonResponse);
-
-        todaySlotList = <TodaySlotData>[];
-        todaySlotList.addAll(todaySlotData.data!);
-
-        loader = false;
-        Future.delayed(const Duration(milliseconds: 10), () {
-          update();
-        });
-      } else {
-        loader = false;
-        Future.delayed(const Duration(milliseconds: 10), () {
-          update();
-        });
-        Get.rawSnackbar(
-            message: 'Please enter valid Input', backgroundColor: Colors.red);
+      var res = await dio.get(
+          'https://cureways.webbysys.click/api/v1/time-slot-view-today/$doctorID');
+      loader = false;
+      update();
+      if (res.statusCode == 200) {
+        if (res.data['data'] != null && res.data['data'].isNotEmpty) {
+          todaySlotList = (res.data['data'] as List)
+              .map((item) => TodaySlotData.fromJson(item))
+              .toList();
+          kLogger.e(todaySlotList.length);
+        }
       }
-    });
+    } catch (e) {
+      loader = false;
+      update();
+      kLogger.e('Error from %%%% Today slot %%%% => $e');
+    }
   }
 }

@@ -31,34 +31,46 @@ class TodaySlotListModel {
 }
 
 class TodaySlotData {
+  final int id;
+  final String? date;
+  final String? slotFrom;
+  final String? slotTo;
+  final String? status;
+  final String? consultancyDuration;
+  final String? scheduleTime;
+
   TodaySlotData({
-    this.id,
+    required this.id,
     this.date,
     this.slotFrom,
     this.slotTo,
     this.status,
+    this.consultancyDuration,
+    this.scheduleTime,
   });
 
-  TodaySlotData.fromJson(dynamic json) {
-    id = json['id'];
-    date = json['date'];
-    slotFrom = json['slot_from'];
-    slotTo = json['slot_to'];
-    status = json['status'];
+  factory TodaySlotData.fromJson(Map<String, dynamic> json) {
+    return TodaySlotData(
+      id: json['id'],
+      date: json['date'],
+      slotFrom: json['slot_from'],
+      slotTo: json['slot_to'],
+      status: json['status'],
+      consultancyDuration: json['consultancy_duration'],
+      scheduleTime: json['schedule_time'],
+    );
   }
-  int? id;
-  String? date;
-  String? slotFrom;
-  String? slotTo;
-  String? status;
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['date'] = date;
-    map['slot_from'] = slotFrom;
-    map['slot_to'] = slotTo;
-    map['status'] = status;
-    return map;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['date'] = date;
+    data['slot_from'] = slotFrom;
+    data['slot_to'] = slotTo;
+    data['status'] = status;
+    data['consultancy_duration'] = consultancyDuration;
+    data['schedule_time'] = scheduleTime;
+    return data;
   }
 }
+

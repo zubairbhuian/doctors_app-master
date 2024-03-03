@@ -10,7 +10,6 @@ class Mixins {
       "title": "Create\nSlot",
       "iconData": Icons.add_box
     },
-    {"title": "All\nSlots", "iconData": Icons.all_inclusive_sharp},
   ];
   final List<Map<String, dynamic>> doctorAppointmentMainMenuItem = [
     {

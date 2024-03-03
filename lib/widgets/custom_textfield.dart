@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class CustomTextField extends StatelessWidget {
   final TextEditingController? controller;
   final bool? obscureText;
@@ -270,6 +268,9 @@ class CustomTextField2 extends StatelessWidget {
 
             //! ********** decoration ********
             decoration: InputDecoration(
+              fillColor:kWhite,
+
+              filled: true,
               iconColor: kRed,
               // ********** errorText ********
               errorText: errorText,
@@ -278,7 +279,7 @@ class CustomTextField2 extends StatelessWidget {
               errorMaxLines: 5,
               // ********** padding ********
               contentPadding: padding ??
-                  EdgeInsets.symmetric(vertical: 12, horizontal: 24.w),
+                  EdgeInsets.symmetric(vertical: 16, horizontal: 24.w),
               // ********** prefixIcon ********
               prefixIcon: prefixIcon,
               // ********** suffixIcon ********
@@ -286,21 +287,25 @@ class CustomTextField2 extends StatelessWidget {
               // ********** border ********
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: kDisabledTextColor, width: 1.0),
+                borderSide:
+                    const BorderSide(color: kDisabledTextColor, width: 1.0),
               ),
               // ********** focusedBorder ********
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(8),
-                borderSide: const BorderSide(color: kDisabledTextColor, width: 1.0),
+                borderSide:
+                    const BorderSide(color: kDisabledTextColor, width: 1.0),
               ),
               // ********** enabledBorder ********
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: const BorderSide(width: 1, color: kDisabledTextColor)),
+                  borderSide:
+                      const BorderSide(width: 1, color: kDisabledTextColor)),
               // ********** errorBorder ********
               errorBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(0),
-                  borderSide: const BorderSide(width: 1, color: kDisabledTextColor)),
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide:
+                      const BorderSide(width: 1, color: kDisabledTextColor)),
               // ********** hintText ********
               hintText: hintText,
               hintStyle: kTitleMedium.copyWith(color: kTextColorLight),
@@ -314,7 +319,7 @@ class CustomTextField2 extends StatelessWidget {
           ),
           // ********** marginBottom ********
           SizedBox(
-            height: marginBottom ?? 24,
+            height: marginBottom ?? 12,
           )
         ],
       );
@@ -329,9 +334,9 @@ class CustomDropdownTextFiel extends StatelessWidget {
     this.hint,
     this.icon,
     this.enabledBorderColor,
-    this.borderColor,
+    this.borderColor, this.value,
   });
-
+  final String? value;
   final String? label;
   final List data;
   final Widget? hint;
@@ -352,6 +357,7 @@ class CustomDropdownTextFiel extends StatelessWidget {
           ),
         SizedBox(height: label == null ? 0 : 8.h),
         DropdownButtonFormField<String>(
+          value: value,
           hint: hint ??
               Text(
                 'Select',
@@ -370,7 +376,7 @@ class CustomDropdownTextFiel extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8.r),
                   borderSide: const BorderSide(color: kDisabledTextColor)),
               contentPadding:
-                  const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
               filled: true,
               fillColor: kWhite,
               hintStyle: TextStyle(

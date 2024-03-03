@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:doctors_app/services/user_service.dart';
-import 'package:doctors_app/views/dashboard_screen.dart';
 import 'package:doctors_app/views/entrypoint/entrypoint_view.dart';
 import 'package:doctors_app/views/welcome_screen.dart';
 import 'package:flutter/material.dart';

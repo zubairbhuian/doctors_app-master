@@ -17,7 +17,7 @@ class _EntrypointViewState extends State<EntrypointView> {
 
   final pages = [
     const DashBoardScreen(),
-    AboutusScreen(),
+   const AboutusScreen(),
     const ProfileView(),
   ];
   @override
