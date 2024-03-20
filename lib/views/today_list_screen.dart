@@ -1,10 +1,8 @@
 import 'package:doctors_app/controllers/slot_store_controller.dart';
 import 'package:doctors_app/controllers/today_slot_list_controller.dart';
-import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pie_chart/pie_chart.dart';
 
 class TodayListScreen extends StatefulWidget {
   const TodayListScreen({super.key});

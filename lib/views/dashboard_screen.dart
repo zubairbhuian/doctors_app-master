@@ -1,17 +1,10 @@
-import 'package:doctors_app/services/mixins.dart';
 import 'package:doctors_app/utils/const_color.dart';
 import 'package:doctors_app/utils/int_extensions.dart';
 import 'package:doctors_app/views/today_list_screen.dart';
-import 'package:doctors_app/views/welcome_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
-import 'all_slots_date_list_screen.dart';
 import 'create_slot_screen.dart';
 
 class DashBoardScreen extends StatefulWidget {
