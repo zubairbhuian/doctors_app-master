@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:doctors_app/services/user_service.dart';
+import 'package:doctors_app/views/auth_screen.dart';
 import 'package:doctors_app/views/entrypoint/entrypoint_view.dart';
 import 'package:doctors_app/views/welcome_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,13 +25,14 @@ class _SplashScreenState extends State<SplashScreen> {
     );
     super.initState();
   }
-
   userCheck() async {
     var isUser = await userService.getBool();
     if (isUser == true) {
       Get.off(() => const EntrypointView());
     } else {
-      Get.off(() => const WelcomescreenCheck());
+      // Get.off(() => const AuthScreen());
+      Get.off(() => const EntrypointView());
+
     }
   }
 

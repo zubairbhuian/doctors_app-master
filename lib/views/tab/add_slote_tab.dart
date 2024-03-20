@@ -11,7 +11,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
 
   @override
   Widget build(BuildContext context) {
-    final _formKey = GlobalKey<FormState>();
+    final formKey = GlobalKey<FormState>();
     var firstSlotFrom = TextEditingController();
     var firstSlotTo = TextEditingController();
     var consultancyFirstSlotDuration = TextEditingController();
@@ -53,12 +53,12 @@ class AddSloteTab extends GetView<SlotStoreController> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Form(
-                key: _formKey,
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Text(
-                      "First Slot",
+                      "First Session",
                       style: TextStyle(
                           color: ConstantsColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -67,12 +67,11 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     const SizedBox(
                       height: 8,
                     ),
-
                     /// !  1
                     CustomTextField2(
                       controller: firstSlotFrom,
                       readOnly: true,
-                      hintText: "First Slot From",
+                      hintText: "First Session From",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -88,7 +87,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please Enter Slot From';
+                          return 'Please Enter Session From';
                         }
                         return null;
                       },
@@ -96,7 +95,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     CustomTextField2(
                       controller: firstSlotTo,
                       readOnly: true,
-                      hintText: "First Slot To",
+                      hintText: "First Session To",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -112,14 +111,14 @@ class AddSloteTab extends GetView<SlotStoreController> {
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
-                          return 'Please Enter Slot To';
+                          return 'Please Enter Session To';
                         }
                         return null;
                       },
                     ),
                     CustomTextField2(
                       controller: consultancyFirstSlotDuration,
-                      hintText: 'Consultancy First Slot Duration',
+                      hintText: 'Consultancy First Session Duration',
                       keyboardType: TextInputType.number,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -131,7 +130,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
 
                     /// !  2
                     const Text(
-                      "Second Slot (Optional)",
+                      "Second Session (Optional)",
                       style: TextStyle(
                           color: ConstantsColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -143,7 +142,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     CustomTextField2(
                       controller: secondSlotFrom,
                       readOnly: true,
-                      hintText: "Second Slot From",
+                      hintText: "Second Session From",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -161,7 +160,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     CustomTextField2(
                       controller: secondSlotTo,
                       readOnly: true,
-                      hintText: "Second Slot To",
+                      hintText: "Second Session To",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -184,7 +183,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
 
                     /// !  3
                     const Text(
-                      "Third Slot (Optional)",
+                      "Third Session (Optional)",
                       style: TextStyle(
                           color: ConstantsColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -196,7 +195,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     CustomTextField2(
                       controller: thirdSlotFrom,
                       readOnly: true,
-                      hintText: "Third Slot From",
+                      hintText: "Third Session From",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -214,7 +213,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                     CustomTextField2(
                       controller: thirdSlotTo,
                       readOnly: true,
-                      hintText: "Third Slot To",
+                      hintText: "Third Session To",
                       suffixIcon: const Icon(Icons.timer),
                       onTap: () async {
                         TimeOfDay? selectedTime = await showTimePicker(
@@ -239,7 +238,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                       height: 16,
                     ),
                     const Text(
-                      "Slot Status  (Optional)",
+                      "Slot Status  (Yes/No)",
                       style: TextStyle(
                           color: ConstantsColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -267,7 +266,7 @@ class AddSloteTab extends GetView<SlotStoreController> {
                 height: 52,
                 child: OutlinedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       if (data.isEmpty) {
                         // create slot
                         controller.createSlot(

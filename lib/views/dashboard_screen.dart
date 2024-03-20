@@ -106,25 +106,33 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 30),
                           decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Column(
+                              color: kWhite,
+                              borderRadius: BorderRadius.circular(24),
+                              boxShadow: const [
+                                BoxShadow(
+                                  offset: Offset(0, 14), // x, y offset
+                                  blurRadius: 34,
+                                  spreadRadius: 0,
+                                  color: Color.fromARGB(255, 234, 241,
+                                      253), // Replace with your desired color
+                                ),
+                              ]),
+                          child:  Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.date_range_rounded,
-                                color: kWhite,
+                                color: kPrimaryColor,
                                 size: 33,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "Today's\nSlots",
-                                style: TextStyle(
-                                    color: Colors.white,
+                                "Slots\n details".toUpperCase(),
+                                style: const TextStyle(
+                                    color: kTextColor,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.center,
@@ -143,25 +151,33 @@ class _DashBoardScreenState extends State<DashBoardScreen> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(vertical: 30),
                           decoration: BoxDecoration(
-                            color: kPrimaryColor,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: const Column(
+                              color: kWhite,
+                              borderRadius: BorderRadius.circular(24),
+                              boxShadow: const [
+                                BoxShadow(
+                                  offset: Offset(0, 14), // x, y offset
+                                  blurRadius: 34,
+                                  spreadRadius: 0,
+                                  color: Color.fromARGB(255, 234, 241,
+                                      253), // Replace with your desired color
+                                ),
+                              ]),
+                          child:  Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.add_box,
-                                color: kWhite,
+                                color: kPrimaryColor,
                                 size: 33,
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 8,
                               ),
                               Text(
-                                "Create\nSlot",
-                                style: TextStyle(
-                                    color: Colors.white,
+                                "Create\nSlot".toUpperCase(),
+                                style: const TextStyle(
+                                    color: kTextColor,
                                     fontSize: 13,
                                     fontWeight: FontWeight.w500),
                                 textAlign: TextAlign.center,
